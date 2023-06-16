@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CinemaApp.Views.NavBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CinemaApp.Views"
+             mc:Ignorable="d">
+
+    <StackPanel Background="#121212">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand" />
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="Background" Value="#121212" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderThickness="0 1" BorderBrush="#242424">
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#242424" TargetName="Border" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StackPanel.Resources>
+        <Button MouseEnter="Movie_MouseEnter" MouseLeave="Movie_MouseLeave" Command="{Binding GoToMovies}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="movieImage" Source="/Icons/movie.png" Margin="15 0 10 0" Height="40" />
+                <Label Content="What's On" Foreground="White" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="loginMenuButton" MouseEnter="Login_MouseEnter" MouseLeave="Login_MouseLeave" Command="{Binding GoToLogin}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="loginImage" Source="/Icons/login.png" Margin="15 0 10 0" Height="40" />
+                <Label Content="Login" Foreground="White" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="ticketsMenuButton" MouseEnter="Ticket_MouseEnter" MouseLeave="Ticket_MouseLeave" Visibility="Collapsed" Command="{Binding GoToMyTickets}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="ticketImage" Source="/Icons/ticket.png" Margin="15 0 10 0" Height="40" />
+                <Label Content="My Tickets" Foreground="White" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="accountMenuButton" MouseEnter="Account_MouseEnter" MouseLeave="Account_MouseLeave" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="accountImage" Source="/Icons/account.png" Margin="15 0 10 0" Height="40" />
+                <Label Content="My Profile" Foreground="White" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="logoutMenuButton" MouseEnter="Logout_MouseEnter" MouseLeave="Logout_MouseLeave" Visibility="Collapsed" Command="{Binding Logout}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="logoutImage" Source="/Icons/logout.png" Margin="15 0 10 0" Height="40" />
+                <Label Content="Logout" Foreground="White" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>
